@@ -12,6 +12,7 @@ using System.Configuration;     //命名空间包含提供用于处理配置数�
 using BenCaoGangMu.InterFace;   //接口命名空间
 
 // 功能：提供访问数据库的基本操作，事务管理的实现等
+
 namespace BenCaoGangMu.DataAccessLayer
 {
     /// <summary>
@@ -20,11 +21,13 @@ namespace BenCaoGangMu.DataAccessLayer
     /// </summary>
     public class DB : IDisposable
     {
-        #region 1.数据库的打开和连接，并释放资源
+        #region 数据库的打开和连接，并释放资源
         public string constring = null;
         SqlConnection con = null;
 
-        //不带参数的构造函数：与数据库的连接信息直接从配置文件app.config 中读取。
+        /// <summary>
+        /// 不带参数的构造函数：与数据库的连接信息直接从配置文件app.config 中读取。
+        /// </summary>
         public DB()
         {
             //添加了using Configuration; 还是无法引用 类ConfigurationManager。
@@ -32,13 +35,18 @@ namespace BenCaoGangMu.DataAccessLayer
             constring = ConfigurationManager.ConnectionStrings["conString"].ToString();
         }
 
-        //带参数的构造函数
+        /// <summary>
+        /// 带参数的构造函数
+        /// </summary>
+        /// <param name="constr"></param>
         public DB(string constr)
         {
             constring = constr;
         }
 
-        //打开连接
+        /// <summary>
+        /// 打开连接
+        /// </summary>
         protected void open()
         {
             if (con == null)
@@ -51,7 +59,9 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //关闭连接
+        /// <summary>
+        /// 关闭连接
+        /// </summary>
         protected void close()
         {
             if (con != null)
@@ -63,7 +73,9 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //释放资源
+        /// <summary>
+        /// 释放资源
+        /// </summary>
         public void Dispose()
         {
             if (con != null)
@@ -76,7 +88,9 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //析构函数
+        /// <summary>
+        /// 析构函数
+        /// </summary>
         ~DB()
         {
             close();   //关闭连接,后面会定义
@@ -85,7 +99,7 @@ namespace BenCaoGangMu.DataAccessLayer
         #endregion
 
         /// <summary>
-        /// 2.功能：查询记录，获取一个 DataSet 对象
+        /// 查询记录，获取一个 DataSet 对象
         /// </summary>
         /// <param name="sql">SQL语句</param>
         /// <param name="parameters">参数数组</param>
@@ -123,7 +137,7 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 3.功能：将一个 DataSet 对象写入到 XML 文件（在打印报表时，用到此方法）
+        /// 将一个 DataSet 对象写入到 XML 文件（在打印报表时，用到此方法）
         /// </summary>
         /// <param name="sql">SQL 语句</param>
         /// <param name="commandType">命令类型</param>
@@ -157,7 +171,38 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 4.功能：查询，向 DataSet 对象中填充数据，选取从 m 开始的 n 个记录 
+        /// 测试专用
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public string getDataSet1(string sql, SqlParameter[] parameters)
+        {
+            try
+            {
+                open();
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+                if (parameters != null)
+                {
+                    adapter.SelectCommand.Parameters.AddRange(parameters);          //为SelectCommand命令对象添加参数
+                    //adapter.SelectCommand.CommandType=CommandType.StoredProcedure ;
+                }
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                return "OK";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            finally
+            {
+                close();
+            }
+        }
+
+        /// <summary>
+        /// 查询，向 DataSet 对象中填充数据，选取从 m 开始的 n 个记录 
         /// </summary>
         /// <param name="sql">SQL 语句</param>
         /// <param name="parameters">命令参数数组</param>
@@ -192,7 +237,7 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 5.功能：查询，返回一个 DataTable 对象
+        /// 查询，返回一个 DataTable 对象
         /// </summary>
         /// <param name="sql">SQL 语句</param>
         /// <param name="parameters">参数数组</param>
@@ -212,7 +257,7 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 6.功能：查询，返回一个 DataRow 对象
+        /// 查询，返回一个 DataRow 对象
         /// </summary>
         /// <param name="sql">SQL 语句</param>
         /// <param name="parameters">参数数组</param>
@@ -231,7 +276,7 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 7.1 功能：查询，返回一个 DataReader 对象，(调用后注意调用SqlDataReader.Close())
+        /// 查询，返回一个 SqlDataReader 对象，(调用后注意调用SqlDataReader.Close())
         /// </summary>
         /// <param name="sql">SQL 语句、存储过程名称</param>
         /// <param name="parameters">参数数组</param>
@@ -262,7 +307,7 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 7.2 功能：查询，返回一个 DataReader 对象（同上，多一个参数CommandType）
+        /// 查询，返回一个 SqlDataReader 对象（同上，多一个参数CommandType）
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="commandType"></param>
@@ -291,13 +336,13 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 8.功能：获得一个实体类的对象
+        /// 获得一个实体类的对象
         /// </summary>
         /// <typeparam name="T">参数类型</typeparam>
         /// <param name="sql">SQL 语句</param>
         /// <param name="parameters">命令参数数组</param>
         /// <returns>返回一个实体类的对象</returns>
-        public T GetEntity<T>(string sql, SqlParameter[] parameters)
+        public T GeEntity<T>(string sql, SqlParameter[] parameters)
         {
             //泛型：generic，通用类型，使类型参数化，能够节省装箱拆箱的时间。
             //T就是参数类型,代编任意参数类型。
@@ -316,13 +361,13 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 9.1 功能：获取实体类对象的集合
+        /// 获取实体类对象的集合
         /// </summary>
         /// <typeparam name="T">类型参数，可以看成是占位符</typeparam>
         /// <param name="sql">SQL 语句</param>
         /// <param name="parameters">参数数组</param>
         /// <returns>实体类对象的集合</returns>
-        public IList<T> GeEntity<T>(string sql, SqlParameter[] parameters)
+        public IList<T> GeEntityList<T>(string sql, SqlParameter[] parameters)
         {
             try
             {
@@ -338,14 +383,14 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 9.2 功能：获取实体类对象的集合
+        /// 获取实体类对象的集合
         /// </summary>
         /// <typeparam name="T">类型参数</typeparam>
         /// <param name="sql">SQL 语句</param>
         /// <param name="commandType">命令对象类型</param>
         /// <param name="parameters">参数数组</param>
         /// <returns>返回实体类的对象集合</returns>
-        public IList<T> GeEntity<T>(string sql, CommandType commandType, SqlParameter[] parameters)
+        public IList<T> GeEntityList<T>(string sql, CommandType commandType, SqlParameter[] parameters)
         {
             try
             {
@@ -361,7 +406,7 @@ namespace BenCaoGangMu.DataAccessLayer
         }
 
         /// <summary>
-        /// 10.获取实现 Ientity 接口的实体类对象集合（利用接口）
+        /// 获取实现 Ientity 接口的实体类对象集合（利用接口）
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
@@ -394,7 +439,13 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        // 获取 IEntity的实体类集合 (利用反射机制)                               类的完整字符串名称："SuperMarket.Entity. Customer_SalesMan_View"
+        /// <summary>
+        /// 获取 IEntity的实体类集合 (利用反射机制)     类的完整字符串名称："SuperMarket.Entity. Customer_SalesMan_View"
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <param name="entityName"></param>
+        /// <returns></returns>
         public IList<IEntity> GeIEntityList(string sql, SqlParameter[] parameters, string entityName)
         {
             try
@@ -434,8 +485,14 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //可以判断 SqlCommand对象的命令类型.CommandType
-        // 获取 IEntity的实体类集合 (利用反射机制)                               类的完整字符串名称："SuperMarket.Entity. Customer_SalesMan_View"
+        /// <summary>
+        /// 可以判断 SqlCommand对象的命令类型.CommandType  获取 IEntity的实体类集合 (利用反射机制)     类的完整字符串名称："SuperMarket.Entity. Customer_SalesMan_View"
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="commandType"></param>
+        /// <param name="parameters"></param>
+        /// <param name="entityName"></param>
+        /// <returns></returns>
         public IList<IEntity> GeIEntityList(string sql, CommandType commandType, SqlParameter[] parameters, string entityName)
         {
             try
@@ -475,7 +532,12 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //执行Insert、 Update 、Deelete等语句
+        /// <summary>
+        /// 执行Insert、 Update 、Deelete等语句
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public int executeSQL(string sql, SqlParameter[] parameters)
         {
             try
@@ -502,7 +564,12 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //执行存储过程（Insert、 Update 、Deelete等语句）
+        /// <summary>
+        /// 执行存储过程（Insert、 Update 、Deelete等语句）
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public int executeSQL_Proc(string sql, SqlParameter[] parameters)
         {
             try
@@ -531,7 +598,12 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //测试专用
+        /// <summary>
+        /// 测试专用
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public string executeSQL1(string sql, SqlParameter[] parameters)
         {
             try
@@ -557,8 +629,16 @@ namespace BenCaoGangMu.DataAccessLayer
                 close();
             }
         }
-        //执行带有返回值、输出参数的存储过程（含有于 SELECT语句）
-        //注:作为学生调用存储过程的入门方法
+
+        /// <summary>
+        /// 执行带有返回值、输出参数的存储过程（含有于 SELECT语句）   注:作为学生调用存储过程的入门方法
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <param name="m"></param>
+        /// <param name="n"></param>
+        /// <param name="tablename"></param>
+        /// <returns></returns>
         public Hashtable executeProcedure(string sql, SqlParameter[] parameters, int m, int n, string tablename)
         {
             try
@@ -593,7 +673,16 @@ namespace BenCaoGangMu.DataAccessLayer
                 close();
             }
         }
-        //执行带有返回值、输出参数的存储过程（含有于 SELECT语句），
+        
+        /// <summary>
+        /// 执行带有返回值、输出参数的存储过程（含有于 SELECT语句）
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <param name="m"></param>
+        /// <param name="n"></param>
+        /// <param name="tablename"></param>
+        /// <returns></returns>
         public Hashtable newExecuteProcedure(string sql, SqlParameter[] parameters, int m, int n, string tablename)
         {
             try
@@ -635,7 +724,16 @@ namespace BenCaoGangMu.DataAccessLayer
                 close();
             }
         }
-        //测试用
+        
+        /// <summary>
+        /// 测试用
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <param name="m"></param>
+        /// <param name="n"></param>
+        /// <param name="tablename"></param>
+        /// <returns></returns>
         public string executeProcedure1(string sql, SqlParameter[] parameters, int m, int n, string tablename)
         {
             try
@@ -671,7 +769,13 @@ namespace BenCaoGangMu.DataAccessLayer
                 close();
             }
         }
-        // 执行存储过程，返回值类型为DataSet
+
+        /// <summary>
+        /// 执行存储过程，返回值类型为DataSet
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public DataSet executeProcedure_ds(string sql, SqlParameter[] parameters)
         {
             try
@@ -703,11 +807,13 @@ namespace BenCaoGangMu.DataAccessLayer
                 close();
             }
         }
-        //功能:获取一个指定字段(表达式)的值:(总是返回第一行第一列)
-        //参数:名称             类型        含义 
-        //      sql             string      要执行的SQL语句
-        //      parameters      SqlParameter[]   命令参数
-        //返回值:执行成功返回生成的 值,否则为 null
+
+        /// <summary>
+        /// 获取一个指定字段(表达式)的值:(总是返回第一行第一列)
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public object executeScalar(string sql, SqlParameter[] parameters)
         {
             try
@@ -730,10 +836,11 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //在.NET的ADO.NET数据库编程中,使用SqlTransaction实现事务操作
-        //参数:名称             类型                    含义 
-        //    sqlarray        String 数组             要执行的一系列相关的SQL语句
-        // 返回值:执行成功返回 true,否则为 false
+        /// <summary>
+        /// 在.NET的ADO.NET数据库编程中,使用SqlTransaction实现事务操作
+        /// </summary>
+        /// <param name="sqlarray"></param>
+        /// <returns></returns>
         public bool executeTransaction(string[] sqlarray)
         {
             open();
@@ -763,7 +870,11 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //执行事务方法的重载（不带参数）
+        /// <summary>
+        /// 执行事务方法的重载（不带参数）
+        /// </summary>
+        /// <param name="sqlarray"></param>
+        /// <returns></returns>
         public bool executeTransaction(ArrayList sqlarray)
         {
             open();
@@ -793,7 +904,12 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //执行事务方法的重载（带参数）
+        /// <summary>
+        /// 执行事务方法的重载（带参数）
+        /// </summary>
+        /// <param name="sqlarray"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public bool executeTransaction(ArrayList sqlarray, ArrayList parameters)
         {
             open();
@@ -846,7 +962,6 @@ namespace BenCaoGangMu.DataAccessLayer
         /// <param name="update_parameters">对明细表执行的修改记录命令需要的参数，无参数则为null，类型：IList<SqlParameter[]></param>
         /// <param name=" del_parameters">对明细表执行的删除记录命令需要的参数，无参数则为null，类型：IList<SqlParameter></param>
         /// <returns>执行成功：true，失败：false</returns>
-
         public bool executeTransaction_few(IList<string> sqls, IList<SqlParameter[]> master_parameters, IList<SqlParameter[]> insert_parameters, IList<SqlParameter[]> update_parameters, IList<SqlParameter> del_parameters)
         {
             open();
@@ -927,7 +1042,15 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //删除 主表--明细表中的记录 （如果删除数据库中记录的数据表之间的主外键关系，此方法和上一方法可以选择其中一个，否则，只能分为2个方法）
+        /// <summary>
+        /// 删除 主表--明细表中的记录 （如果删除数据库中记录的数据表之间的主外键关系，此方法和上一方法可以选择其中一个，否则，只能分为2个方法）
+        /// </summary>
+        /// <param name="sqls"></param>
+        /// <param name="master_parameters"></param>
+        /// <param name="insert_parameters"></param>
+        /// <param name="update_parameters"></param>
+        /// <param name="del_parameters"></param>
+        /// <returns></returns>
         public bool executeTransaction_few_del(IList<string> sqls, IList<SqlParameter[]> master_parameters, IList<SqlParameter[]> insert_parameters, IList<SqlParameter[]> update_parameters, IList<SqlParameter> del_parameters)
         {
             open();
@@ -1022,8 +1145,12 @@ namespace BenCaoGangMu.DataAccessLayer
 
 
 
-        //执行事务方法的重载（带参数,）
-        //说明：此方法具有针对性，无通用性
+        /// <summary>
+        /// 执行事务方法的重载（带参数）   说明：此方法具有针对性，无通用性
+        /// </summary>
+        /// <param name="sqlarray"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public bool executeTransaction_few(ArrayList sqlarray, ArrayList parameters)
         {
             open();
@@ -1065,8 +1192,13 @@ namespace BenCaoGangMu.DataAccessLayer
             }
         }
 
-        //执行事务方法的重载（带参数,应用于页面 checkOut.aspx 的“提交订单按钮”）
-        //说明：此方法具有针对性，无通用性
+        /// <summary>
+        /// 执行事务方法的重载（带参数,应用于页面 checkOut.aspx 的“提交订单按钮”）
+        /// 说明：此方法具有针对性，无通用性
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public bool executeTransaction_few(string sql, ArrayList parameters)
         {
             open();
@@ -1171,7 +1303,13 @@ namespace BenCaoGangMu.DataAccessLayer
             return executeSQL(sql, null) > 0 ? true : false;
         }
 
-        //向学生演示专用
+        /// <summary>
+        /// 向学生演示专用
+        /// </summary>
+        /// <param name="TableName"></param>
+        /// <param name="Cols"></param>
+        /// <param name="Where"></param>
+        /// <returns></returns>
         public string Update_demo(String TableName, Hashtable Cols, String Where)
         {
             int Count = 0;

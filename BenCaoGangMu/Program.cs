@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BenCaoGangMu.Users;
 
 namespace BenCaoGangMu
 {
@@ -16,7 +17,7 @@ namespace BenCaoGangMu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Add());
+            Application.Run(new frmLogin());
         }
     }
 }

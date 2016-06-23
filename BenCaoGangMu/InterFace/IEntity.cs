@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//建立实体接口
+
 namespace BenCaoGangMu.InterFace
 {
+    /// <summary>
+    /// 建立实体接口
+    /// </summary>
     public interface IEntity
     {
         void setValue(int index, Object obj);   //为属性设置值

@@ -10,6 +10,9 @@ using System.Data.SqlClient;
 //本项目把错误分为系统错误和数据库错误，并对这两种错误信息的格式进行了定制。
 namespace BenCaoGangMu.Tools
 {
+    /// <summary>
+    /// 错误信息的处理     common:常见的；util：利用。
+    /// </summary>
     class CommonUtil
     {
         // 1 计算两个数的乘积

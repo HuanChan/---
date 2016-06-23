@@ -12,7 +12,7 @@ using System.Reflection;
 namespace BenCaoGangMu.DataAccessLayer
 {
     /// <summary>
-    ///DataReader转换成为实体类帮助类
+    ///功能：将 IDateReader 对象转换成为对应实体类对象（集合）的辅助类。
     /// </summary>
     public static class DataReaderHelper
     {

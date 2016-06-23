@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\BenCaoGangMu.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,9 +52,20 @@
     <Compile Include="Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusinessLogicLayer\UserService.cs" />
     <Compile Include="Common\SPException.cs" />
     <Compile Include="DataAccessLayer\DataReaderHelper.cs" />
     <Compile Include="DataAccessLayer\DB.cs" />
+    <Compile Include="DataAccessLayer\UserDao.cs" />
+    <Compile Include="Entity\Actions.cs" />
+    <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\User.cs" />
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterFace\IEntity.cs" />
     <Compile Include="Modify.cs">
       <SubType>Form</SubType>
@@ -70,8 +82,18 @@
       <DependentUpon>QueryAndDel.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\CommonUtil.cs" />
+    <Compile Include="Tools\Des.cs" />
+    <Compile Include="Users\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modify.resx">
       <DependentUpon>Modify.cs</DependentUpon>
@@ -87,6 +109,9 @@
     </Compile>
     <EmbeddedResource Include="QueryAndDel.resx">
       <DependentUpon>QueryAndDel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
