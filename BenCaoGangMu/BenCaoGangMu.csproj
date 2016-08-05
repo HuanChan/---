@@ -11,6 +11,23 @@
     <AssemblyName>BenCaoGangMu</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,6 +40,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>
     </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,10 +50,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,19 +73,142 @@
     <Compile Include="Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusinessLogicLayer\ActionService.cs" />
+    <Compile Include="BusinessLogicLayer\DataBackup_RestoreService.cs" />
+    <Compile Include="BusinessLogicLayer\NewActionDAO.cs" />
+    <Compile Include="BusinessLogicLayer\NewActionService.cs" />
+    <Compile Include="BusinessLogicLayer\RoleActionService.cs" />
+    <Compile Include="BusinessLogicLayer\RoleDAO.cs" />
+    <Compile Include="BusinessLogicLayer\RoleService.cs" />
+    <Compile Include="BusinessLogicLayer\UserRoleService.cs" />
     <Compile Include="BusinessLogicLayer\UserService.cs" />
     <Compile Include="Common\SPException.cs" />
+    <Compile Include="DataAccessLayer\ActionDAO.cs" />
+    <Compile Include="DataAccessLayer\DataBackup_RestoreDAO.cs" />
     <Compile Include="DataAccessLayer\DataReaderHelper.cs" />
     <Compile Include="DataAccessLayer\DB.cs" />
+    <Compile Include="DataAccessLayer\RoleActionActionDAO.cs" />
     <Compile Include="DataAccessLayer\UserDao.cs" />
+    <Compile Include="DataAccessLayer\UserRoleDAO.cs" />
     <Compile Include="Entity\Actions.cs" />
+    <Compile Include="Entity\NewAction.cs" />
     <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\RoleAction.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\UserRole.cs" />
+    <Compile Include="FormData\frmBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormData\frmBackup.Designer.cs">
+      <DependentUpon>frmBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormData\frmRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormData\frmRestore.Designer.cs">
+      <DependentUpon>frmRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCustomerBusinessRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomerBusinessRecord.Designer.cs">
+      <DependentUpon>frmCustomerBusinessRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeliveryBrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeliveryBrow.Designer.cs">
+      <DependentUpon>frmDeliveryBrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeliveryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeliveryList.Designer.cs">
+      <DependentUpon>frmDeliveryList.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduct.Designer.cs">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPurchaseBrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPurchaseBrow.Designer.cs">
+      <DependentUpon>frmPurchaseBrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPurchaseGather.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPurchaseGather.Designer.cs">
+      <DependentUpon>frmPurchaseGather.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPurchaseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPurchaseList.Designer.cs">
+      <DependentUpon>frmPurchaseList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetDeliveryBrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetDeliveryBrow.Designer.cs">
+      <DependentUpon>frmRetDeliveryBrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetDeliveryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetDeliveryList.Designer.cs">
+      <DependentUpon>frmRetDeliveryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetPurchaseBrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetPurchaseBrow.Designer.cs">
+      <DependentUpon>frmRetPurchaseBrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetPurchaseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetPurchaseList.Designer.cs">
+      <DependentUpon>frmRetPurchaseList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalesMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalesMan.Designer.cs">
+      <DependentUpon>frmSalesMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStockQuery.Designer.cs">
+      <DependentUpon>frmStockQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSupplier.Designer.cs">
+      <DependentUpon>frmSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSupplierBusiReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSupplierBusiReport.Designer.cs">
+      <DependentUpon>frmSupplierBusiReport.cs</DependentUpon>
     </Compile>
     <Compile Include="InterFace\IEntity.cs" />
     <Compile Include="Modify.cs">
@@ -82,6 +225,24 @@
     <Compile Include="QueryAndDel.Designer.cs">
       <DependentUpon>QueryAndDel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Roles\frmAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roles\frmAction.Designer.cs">
+      <DependentUpon>frmAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\frmRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roles\frmRole.Designer.cs">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\frmRole_Action_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roles\frmRole_Action_New.Designer.cs">
+      <DependentUpon>frmRole_Action_New.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\CommonUtil.cs" />
     <Compile Include="Tools\Des.cs" />
     <Compile Include="Users\frmLogin.cs">
@@ -90,8 +251,32 @@
     <Compile Include="Users\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\frmModifyPwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmModifyPwd.Designer.cs">
+      <DependentUpon>frmModifyPwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmUser_Role.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUser_Role.Designer.cs">
+      <DependentUpon>frmUser_Role.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormData\frmBackup.resx">
+      <DependentUpon>frmBackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormData\frmRestore.resx">
+      <DependentUpon>frmRestore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -107,12 +292,31 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="QueryAndDel.resx">
       <DependentUpon>QueryAndDel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Roles\frmAction.resx">
+      <DependentUpon>frmAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Roles\frmRole.resx">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Roles\frmRole_Action_New.resx">
+      <DependentUpon>frmRole_Action_New.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmModifyPwd.resx">
+      <DependentUpon>frmModifyPwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUser_Role.resx">
+      <DependentUpon>frmUser_Role.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -126,9 +330,30 @@
     <None Include="readme\系统框架类间关系.vsdx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

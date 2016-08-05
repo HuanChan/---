@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BenCaoGangMu.Users;
+using BenCaoGangMu.Roles;
 
 namespace BenCaoGangMu
 {
@@ -17,7 +18,7 @@ namespace BenCaoGangMu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmRole_Action_New());
         }
     }
 }

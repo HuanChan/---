@@ -115,24 +115,28 @@
             this.销售员资料管理ToolStripMenuItem.Name = "销售员资料管理ToolStripMenuItem";
             this.销售员资料管理ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.销售员资料管理ToolStripMenuItem.Text = "销售员资料管理";
+            this.销售员资料管理ToolStripMenuItem.Click += new System.EventHandler(this.销售员资料管理ToolStripMenuItem_Click);
             // 
             // 客户资料管理ToolStripMenuItem
             // 
             this.客户资料管理ToolStripMenuItem.Name = "客户资料管理ToolStripMenuItem";
             this.客户资料管理ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.客户资料管理ToolStripMenuItem.Text = "客户资料管理";
+            this.客户资料管理ToolStripMenuItem.Click += new System.EventHandler(this.客户资料管理ToolStripMenuItem_Click);
             // 
             // 商品资料管理ToolStripMenuItem
             // 
             this.商品资料管理ToolStripMenuItem.Name = "商品资料管理ToolStripMenuItem";
             this.商品资料管理ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.商品资料管理ToolStripMenuItem.Text = "商品资料管理";
+            this.商品资料管理ToolStripMenuItem.Click += new System.EventHandler(this.商品资料管理ToolStripMenuItem_Click);
             // 
             // 供应商资料管理ToolStripMenuItem
             // 
             this.供应商资料管理ToolStripMenuItem.Name = "供应商资料管理ToolStripMenuItem";
             this.供应商资料管理ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.供应商资料管理ToolStripMenuItem.Text = "供应商资料管理";
+            this.供应商资料管理ToolStripMenuItem.Click += new System.EventHandler(this.供应商资料管理ToolStripMenuItem_Click);
             // 
             // 采购管理ToolStripMenuItem
             // 
@@ -150,24 +154,28 @@
             this.编辑采购单ToolStripMenuItem.Name = "编辑采购单ToolStripMenuItem";
             this.编辑采购单ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.编辑采购单ToolStripMenuItem.Text = "编辑采购单";
+            this.编辑采购单ToolStripMenuItem.Click += new System.EventHandler(this.编辑采购单ToolStripMenuItem_Click);
             // 
             // 编辑采购退货单ToolStripMenuItem
             // 
             this.编辑采购退货单ToolStripMenuItem.Name = "编辑采购退货单ToolStripMenuItem";
             this.编辑采购退货单ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.编辑采购退货单ToolStripMenuItem.Text = "编辑采购退货单";
+            this.编辑采购退货单ToolStripMenuItem.Click += new System.EventHandler(this.编辑采购退货单ToolStripMenuItem_Click);
             // 
             // 浏览采购信息ToolStripMenuItem
             // 
             this.浏览采购信息ToolStripMenuItem.Name = "浏览采购信息ToolStripMenuItem";
             this.浏览采购信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.浏览采购信息ToolStripMenuItem.Text = "浏览采购信息";
+            this.浏览采购信息ToolStripMenuItem.Click += new System.EventHandler(this.浏览采购信息ToolStripMenuItem_Click);
             // 
             // 浏览采购退货信息ToolStripMenuItem
             // 
             this.浏览采购退货信息ToolStripMenuItem.Name = "浏览采购退货信息ToolStripMenuItem";
             this.浏览采购退货信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.浏览采购退货信息ToolStripMenuItem.Text = "浏览采购退货信息";
+            this.浏览采购退货信息ToolStripMenuItem.Click += new System.EventHandler(this.浏览采购退货信息ToolStripMenuItem_Click);
             // 
             // 销售管理ToolStripMenuItem
             // 
@@ -185,24 +193,28 @@
             this.编辑销售单ToolStripMenuItem.Name = "编辑销售单ToolStripMenuItem";
             this.编辑销售单ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.编辑销售单ToolStripMenuItem.Text = "编辑销售单";
+            this.编辑销售单ToolStripMenuItem.Click += new System.EventHandler(this.编辑销售单ToolStripMenuItem_Click);
             // 
             // 编辑销售退货单ToolStripMenuItem
             // 
             this.编辑销售退货单ToolStripMenuItem.Name = "编辑销售退货单ToolStripMenuItem";
             this.编辑销售退货单ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.编辑销售退货单ToolStripMenuItem.Text = "编辑销售退货单";
+            this.编辑销售退货单ToolStripMenuItem.Click += new System.EventHandler(this.编辑销售退货单ToolStripMenuItem_Click);
             // 
             // 浏览销售信息ToolStripMenuItem
             // 
             this.浏览销售信息ToolStripMenuItem.Name = "浏览销售信息ToolStripMenuItem";
             this.浏览销售信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.浏览销售信息ToolStripMenuItem.Text = "浏览销售信息";
+            this.浏览销售信息ToolStripMenuItem.Click += new System.EventHandler(this.浏览销售信息ToolStripMenuItem_Click);
             // 
             // 浏览销售退货信息ToolStripMenuItem
             // 
             this.浏览销售退货信息ToolStripMenuItem.Name = "浏览销售退货信息ToolStripMenuItem";
             this.浏览销售退货信息ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.浏览销售退货信息ToolStripMenuItem.Text = "浏览销售退货信息";
+            this.浏览销售退货信息ToolStripMenuItem.Click += new System.EventHandler(this.浏览销售退货信息ToolStripMenuItem_Click);
             // 
             // 统计查询ToolStripMenuItem
             // 
@@ -220,24 +232,28 @@
             this.供应商交易记录ToolStripMenuItem.Name = "供应商交易记录ToolStripMenuItem";
             this.供应商交易记录ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.供应商交易记录ToolStripMenuItem.Text = "供应商交易记录";
+            this.供应商交易记录ToolStripMenuItem.Click += new System.EventHandler(this.供应商交易记录ToolStripMenuItem_Click);
             // 
             // 客户交易记录ToolStripMenuItem
             // 
             this.客户交易记录ToolStripMenuItem.Name = "客户交易记录ToolStripMenuItem";
             this.客户交易记录ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.客户交易记录ToolStripMenuItem.Text = "客户交易记录";
+            this.客户交易记录ToolStripMenuItem.Click += new System.EventHandler(this.客户交易记录ToolStripMenuItem_Click);
             // 
             // 库存查询ToolStripMenuItem
             // 
             this.库存查询ToolStripMenuItem.Name = "库存查询ToolStripMenuItem";
             this.库存查询ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.库存查询ToolStripMenuItem.Text = "库存查询";
+            this.库存查询ToolStripMenuItem.Click += new System.EventHandler(this.库存查询ToolStripMenuItem_Click);
             // 
             // 采购汇总ToolStripMenuItem
             // 
             this.采购汇总ToolStripMenuItem.Name = "采购汇总ToolStripMenuItem";
             this.采购汇总ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.采购汇总ToolStripMenuItem.Text = "采购汇总";
+            this.采购汇总ToolStripMenuItem.Click += new System.EventHandler(this.采购汇总ToolStripMenuItem_Click);
             // 
             // 数据管理ToolStripMenuItem
             // 
@@ -264,6 +280,7 @@
             this.完整备份ToolStripMenuItem.Name = "完整备份ToolStripMenuItem";
             this.完整备份ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.完整备份ToolStripMenuItem.Text = "完整备份";
+            this.完整备份ToolStripMenuItem.Click += new System.EventHandler(this.完整备份ToolStripMenuItem_Click);
             // 
             // 差异备份ToolStripMenuItem
             // 
@@ -292,6 +309,7 @@
             this.完整备份还原数据库ToolStripMenuItem.Name = "完整备份还原数据库ToolStripMenuItem";
             this.完整备份还原数据库ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.完整备份还原数据库ToolStripMenuItem.Text = "完整备份还原数据库";
+            this.完整备份还原数据库ToolStripMenuItem.Click += new System.EventHandler(this.完整备份还原数据库ToolStripMenuItem_Click);
             // 
             // 差异还原备份ToolStripMenuItem
             // 
@@ -403,42 +421,49 @@
             this.用户管理ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.用户管理ToolStripMenuItem.Text = "用户管理&A";
+            this.用户管理ToolStripMenuItem.Click += new System.EventHandler(this.用户管理ToolStripMenuItem_Click);
             // 
             // 角色管理ToolStripMenuItem
             // 
             this.角色管理ToolStripMenuItem.Name = "角色管理ToolStripMenuItem";
             this.角色管理ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.角色管理ToolStripMenuItem.Text = "角色管理";
+            this.角色管理ToolStripMenuItem.Click += new System.EventHandler(this.用户角色管理ToolStripMenuItem_Click);
             // 
             // 权限管理ToolStripMenuItem
             // 
             this.权限管理ToolStripMenuItem.Name = "权限管理ToolStripMenuItem";
             this.权限管理ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.权限管理ToolStripMenuItem.Text = "权限管理";
+            this.权限管理ToolStripMenuItem.Click += new System.EventHandler(this.权限管理ToolStripMenuItem_Click);
             // 
             // 用户角色管理ToolStripMenuItem
             // 
             this.用户角色管理ToolStripMenuItem.Name = "用户角色管理ToolStripMenuItem";
             this.用户角色管理ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.用户角色管理ToolStripMenuItem.Text = "用户角色管理";
+            this.用户角色管理ToolStripMenuItem.Click += new System.EventHandler(this.用户角色管理ToolStripMenuItem_Click);
             // 
             // 角色权限管理ToolStripMenuItem
             // 
             this.角色权限管理ToolStripMenuItem.Name = "角色权限管理ToolStripMenuItem";
             this.角色权限管理ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.角色权限管理ToolStripMenuItem.Text = "角色权限管理";
+            this.角色权限管理ToolStripMenuItem.Click += new System.EventHandler(this.角色权限管理ToolStripMenuItem_Click);
             // 
             // 修改密码ToolStripMenuItem
             // 
             this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
             this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.修改密码ToolStripMenuItem.Text = "修改密码";
+            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
             // 
             // 退出系统ToolStripMenuItem
             // 
             this.退出系统ToolStripMenuItem.Name = "退出系统ToolStripMenuItem";
             this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(76, 21);
             this.退出系统ToolStripMenuItem.Text = "退出系统&X";
+            this.退出系统ToolStripMenuItem.Click += new System.EventHandler(this.退出系统ToolStripMenuItem_Click);
             // 
             // ssMain
             // 
@@ -463,11 +488,13 @@
             this.Controls.Add(this.ssMain);
             this.Controls.Add(this.msMain);
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(1200, 600);
+            this.MainMenuStrip = this.msMain;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "食材管理系统";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();

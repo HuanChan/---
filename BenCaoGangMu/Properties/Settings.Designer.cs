@@ -22,16 +22,5 @@ namespace BenCaoGangMu.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public char Setting {
-            get {
-                return ((char)(this["Setting"]));
-            }
-            set {
-                this["Setting"] = value;
-            }
-        }
     }
 }
